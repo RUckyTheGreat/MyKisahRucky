@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Bini - Get Started</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      font-family: 'Lexend', sans-serif;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,80,0.15), transparent 70%);
+      animation: pulse-bg 6s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse-bg {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 1s ease-out both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glow-btn:hover {
+      box-shadow: 0 0 15px #f43f5e;
+      transform: scale(1.05);
+    }
+
+    .glow-btn {
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <div class="min-h-screen flex flex-col justify-center items-center text-center px-6 space-y-6 fade-up">
+    <h1 class="text-5xl md:text-6xl font-extrabold text-red-500 drop-shadow-lg animate-pulse">
+      Welcome to My Bini website💖
+    </h1>
+    <p class="text-gray-300 text-lg max-w-md fade-up" style="animation-delay: 0.5s; animation-fill-mode: both;">
+      The ultimate waifu showcase site, made with love and obsession 💫
+    </p>
+    <button id="getStartedBtn" class="glow-btn bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg text-lg font-semibold fade-up"
+      style="animation-delay: 1s; animation-fill-mode: both;">
+      🚀 Get Started
+    </button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('getStartedBtn');
+    btn.addEventListener('click', () => {
+      localStorage.setItem('alreadyStarted', 'yes');
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bini - Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      background-size: 300% 300%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-bg {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section {
+      position: relative;
+      z-index: 10;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      opacity: 0.04;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .section img {
+      margin: auto;
+    }
+
+    code {
+      background-color: rgba(255,255,255,0.05);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+
+    .markdown-body a {
+      color: #f43f5e;
+    }
+
+    .markdown-body h1, .markdown-body h2 {
+      color: #f87171;
+    }
+
+    .badge img {
+      margin: 0.3rem 0.4rem;
+    }
+  </style>
+</head>
+<body class="text-white overflow-x-hidden">
+  <!-- Navbar -->
+  <nav class="glass-bg px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md backdrop-blur-xl">
+    <h1 class="text-3xl font-bold text-red-500 tracking-wide drop-shadow-sm">My Bini</h1>
+    <ul class="flex items-center space-x-6 text-base md:text-lg font-medium text-gray-200">
+      <li><a href="home.html" class="hover:text-red-400 transition">Home</a></li>
+      <li><a href="profile.html" class="hover:text-red-400 text-red-400 font-semibold">Profile</a></li>
+    </ul>
+  </nav>
+
+  <!-- Profile Section -->
+  <section class="section px-6 md:px-12 py-16 max-w-4xl mx-auto markdown-body text-gray-200 leading-relaxed">
+    <h2 class="text-4xl font-bold text-red-400 text-center mb-10">👋 Hi, I'm Rucky!</h2>
+
+    <p>🕹️ Game Dev Enthusiast | 👨‍💻 Programmer | 🎨 Digital Artist | 🔧 Blender Tinkerer</p>
+    <p>👨‍💻 Currently building web apps & Roblox games with custom mechanics</p>
+    <p>🎓 Learning FastAPI, React, and full-stack project deployment</p>
+    <p>🎯 Passionate about turning ideas into polished interactive experiences</p>
+    <p>📚 Always learning — from password security to proposal generation engines!</p>
+
+    <hr class="my-8 border-zinc-700"/>
+
+    <h2>🏆 GitHub Stats</h2>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4 my-4">
+      <img src="https://github-readme-stats.vercel.app/api?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&count_private=true" class="rounded-lg"/>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&layout=compact" class="rounded-lg"/>
+    </div>
+
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=RUckyTheGreat&bg_color=0d1117&color=ffffff&line=ff4f8b&point=fcd12a&area=true&hide_border=true" class="rounded-lg my-4"/>
+    <img src="https://github-profile-trophy.vercel.app/?username=RUckyTheGreat&theme=radical" class="my-4"/>
+
+    <h2>🛠 Tech Stack & Tools</h2>
+    <div class="badge flex flex-wrap items-center mt-4">
+      <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
+      <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+      <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+      <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+      <img src="https://img.shields.io/badge/luau-blue?style=for-the-badge&logo=lua&logoColor=white"/>
+      <img src="https://img.shields.io/badge/fastapi-005f73?style=for-the-badge&logo=fastapi&logoColor=white"/>
+      <img src="https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+      <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+      <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/>
+      <img src="https://img.shields.io/badge/blender-F5792A?style=for-the-badge&logo=blender&logoColor=white"/>
+    </div>
+
+    <h2 class="mt-10">🏅 Certifications & Achievements</h2>
+    <ul class="list-disc list-inside">
+      <li>🥇 <b>Jurnalis</b> (idk where the certification)</li>
+      <li>🥈 <a href="https://drive.google.com/file/d/1aIYjaRizw5xI_F_JvDXlWU3w40tk1tmL/view?usp=drive_link" target="_blank">Story Telling Contest (UPI - Korean)</a></li>
+      <li>🧠 Representing creativity & curiosity with every build</li>
+    </ul>
+
+    <h2 class="mt-10">🌟 Featured Projects</h2>
+    <ul class="list-disc list-inside">
+      <li>🧟 <a href="https://github.com/RUckyTheGreat/Propogen-Chan" target="_blank">PROPOGEN-CHAN</a> – Proposal Generator using <b>React + FastAPI</b>, with PDF export & image upload</li>
+      <li>🔐 <a href="https://github.com/RUckyTheGreat/Password-generator-FreshPython" target="_blank">Safe Password Generator</a> – Desktop password tool with multiple modes</li>
+      <li>🎮 <a href="https://www.roblox.com/games/139088614640443/StoryTurnbaseGame" target="_blank">Roblox Combat System</a> – Advanced turn-based combat system (WIP)</li>
+    </ul>
+
+    <h2 class="mt-10">🧠 Currently Exploring</h2>
+    <ul class="list-disc list-inside">
+      <li>🤖 Scripting AI logic in <b>Roblox Studio</b></li>
+      <li>🌐 Building secure full-stack apps with FastAPI + React</li>
+      <li>📊 UI polish, animation, and PDF generation</li>
+    </ul>
+
+    <h2 class="mt-10">🔥 What I'm Working On</h2>
+    <ul class="list-disc list-inside">
+      <li>🚀 Public launch of Proposal Generator app</li>
+      <li>🎮 Multiplayer emote sync in Roblox</li>
+      <li>🎯 Deep dive into API deployment and backend logic</li>
+    </ul>
+
+    <div class="flex justify-center my-10">
+      <img src="https://c.tenor.com/SDkS_6QSzjgAAAAd/tenor.gif" class="rounded-lg"/>
+    </div>
+
+    <h2 class="mt-10 text-center">🌐 Connect with Me</h2>
+    <div class="flex flex-wrap justify-center gap-3 my-4">
+      <a href="https://www.tiktok.com/@naptuneeel" target="_blank"><img src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=tiktok&logoColor=white"/></a>
+      <a href="https://www.instagram.com/vyu_tune" target="_blank"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/></a>
+      <a href="https://twitter.com/ruckishuman" target="_blank"><img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=twitter&logoColor=white"/></a>
+      <a href="https://www.reddit.com/user/critical_Ravine" target="_blank"><img src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=reddit&logoColor=white"/></a>
+      <a href="https://discord.gg/2zwUr3jaHx" target="_blank"><img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"/></a>
+      <a href="https://www.roblox.com/users/3101268537/profile" target="_blank"><img src="https://img.shields.io/badge/Roblox-%2320232a.svg?style=for-the-badge&logo=roblox&logoColor=white"/></a>
+    </div>
+
+    <div class="flex justify-center my-6">
+      <img src="https://media.tenor.com/piOupYyLux0AAAAi/anime-kitty.gif" class="rounded-lg" />
+    </div>
+
+    <div class="text-center mt-10 text-sm text-gray-400">
+      <img src="https://komarev.com/ghpvc/?username=RUckyTheGreat&color=blue" class="mx-auto" />
+      <p class="mt-2">🚀 Thanks for visiting!</p>
+      <p><em>We are human, not horse. Human are evolving...</em></p>
+      <img src="https://c.tenor.com/1cIigwthwRIAAAAC/tenor.gif" class="rounded-lg mt-4 mx-auto" />
+    </div>
+  </section>
+
+  <!-- Particle Background -->
+  <div id="tsparticles" class="fixed top-0 left-0 w-full h-full z-0"></div>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      background: { color: "transparent" },
+      fpsLimit: 60,
+      particles: {
+        color: { value: "#ff0055" },
+        links: {
+          enable: true,
+          color: "#ff0055",
+          distance: 100,
+          opacity: 0.3
+        },
+        move: {
+          enable: true,
+          speed: 0.5
+        },
+        number: {
+          value: 30
+        },
+        opacity: {
+          value: 0.4
+        },
+        shape: {
+          type: "circle"
+        },
+        size: {
+          value: { min: 1, max: 3 }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

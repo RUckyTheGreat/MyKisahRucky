@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bini - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      background-size: 300% 300%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glass-bg {
+      background: rgba(24, 24, 27, 0.6);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glow-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .glow-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.4);
+    }
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cursor-glow {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255,0,85,0.15) 0%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: screen;
+  transition: transform 0.05s ease;
+}
+
+* {
+  transition: all 0.3s ease;
+}
+
+
+#tsparticles {
+  z-index: -1 !important;
+}
+
+
+  </style>
+</head>
+<body class="text-white overflow-x-hidden">
+<div id="cursorGlow" class="cursor-glow"></div>
+
+<nav class="glass-bg px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md backdrop-blur-xl">
+  <h1 class="text-3xl font-bold text-red-500 tracking-wide drop-shadow-sm">My Bini</h1>
+  <ul class="flex items-center space-x-6 text-base md:text-lg font-medium text-gray-200">
+    <li><a href="home.html" class="hover:text-red-400 transition">Home</a></li>
+    <li><a href="profile.html" class="hover:text-red-400 transition text-red-400 font-semibold">Profile</a></li>
+  </ul>
+</nav>
+
+  <!-- Sidebar Shortcuts -->
+  <aside class="fixed left-2 top-1/2 transform -translate-y-1/2 space-y-4 z-40">
+    <img src="https://placewaifu.com/image/210" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('intro')" />
+    <img src="https://placewaifu.com/image/211" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('gallery')" />
+    <img src="https://placewaifu.com/image/212" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('profiles')" />
+  </aside>
+
+  <!-- Sections -->
+  <section id="intro" class="section min-h-screen flex items-center justify-center text-center px-4">
+    <div class="space-y-6 max-w-2xl">
+      <h2 class="text-5xl md:text-6xl text-red-500 font-extrabold drop-shadow-lg">Welcome to My Bini 💖</h2>
+      <p class="text-gray-300 text-lg">Etalase digital cinta waifu. Shrine suci, bukan sekadar galeri.</p>
+     <a href="#gallery" class="inline-block mt-4 px-6 py-3 bg-red-500 hover:bg-pink-600 hover:scale-105 rounded-xl shadow-lg transition-all duration-300 text-white font-semibold">Lihat Bini</a>
+
+    </div>
+  </section>
+
+  <section id="about" class="section px-6 md:px-12 py-20 bg-zinc-900/70">
+    <h2 class="text-3xl font-bold text-red-400 text-center mb-6">Tentang Website Ini</h2>
+    <p class="text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
+      Shrine virtual penuh estetika dan cinta untuk waifu. Transparan PNG, efek halus, dan profil personal — seperti portofolio cinta digital.
+    </p>
+  </section>
+  <section id="profiles" class="section px-6 md:px-12 py-20 bg-gradient-to-b from-zinc-950 to-zinc-900/90">
+    <h2 class="text-3xl font-bold text-red-400 text-center mb-10">Profil Bini</h2>
+<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
+  <img src="https://i.pinimg.com/736x/3b/b2/8f/3bb28f8f9d484f84c86bd40adc048779.jpg" class="w-40 rounded-xl shadow-md" />
+  <div>
+    <h3 class="text-xl font-semibold text-red-300">Nene Kusanagi</h3>
+    <p class="text-gray-300">Salah satu anggota unit idol <strong>Vivid BAD SQUAD</strong> dari Project Sekai. Nene punya suara lembut yang menenangkan, tapi sering tampak canggung dan pemalu saat di luar panggung. Di balik keanggunan idolanya, dia menyimpan kejujuran yang polos dan hangat. Dunia sekai terasa lebih cerah saat Nene tersenyum. 💗</p>
+  </div>
+</div>
+<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
+  <img src="https://i.pinimg.com/736x/36/02/9b/36029b0af4a618057ffa81f801fa0347.jpg" class="w-40 rounded-xl shadow-md" />
+  <div>
+    <h3 class="text-xl font-semibold text-red-300">Rikka Takanashi</h3>
+    <p class="text-gray-300">Putri kegelapan dari dunia chuunibyou. Rikka adalah gadis dengan mata kanan yang katanya menyegel kekuatan supernatural bernama <em>"Tyrant's Eye"</em>. Namun di balik delusi itu, tersembunyi gadis manis penuh perasaan yang belum bisa lepas dari masa lalu. Imajinasi dan hati lembutnya menjadikannya waifu yang sangat unik dan tak tergantikan. 🖤</p>
+  </div>
+</div>
+<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
+  <img src="https://i.pinimg.com/736x/38/28/ca/3828ca7218feffb362d69235ec249906.jpg" class="w-40 rounded-xl shadow-md" />
+  <div>
+    <h3 class="text-xl font-semibold text-red-300">Castorice</h3>
+    <p class="text-gray-300">Karakter orisinal dari semesta Honkai: Star Rail. Campuran energi teknomagik dan kelembutan tak terduga. Castorice dikenal sebagai penyihir data — menguasai algoritma sekaligus pesona. Wibawanya misterius, tapi kehadirannya membuat dunia terasa lebih tenang dan indah. Sebuah karakter waifu masa depan yang layak dijaga. 🔮</p>
+  </div>
+</div>
+
+  </section>
+
+  <section id="contact" class="section px-6 md:px-12 py-20 bg-zinc-900/80">
+    
+    <h2 class="text-3xl font-bold text-red-400 text-center mb-4">Contact</h2>
+    <p class="text-gray-300 text-center">Ingin belajar ngoding namun enggan ngoding ? ayo bermalas bersama dengan kontak:</p>
+    <p class="text-center text-red-300 mt-2 text-lg">ruckishuman@gmail.com</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-500 text-sm bg-zinc-950">
+    &copy; 2025 My Bini. Created with ❤️ & anime power.
+  </footer>
+
+  <script>
+    function scrollToDiv(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Scroll fade-in section reveal
+    const sections = document.querySelectorAll(".section");
+
+    const reveal = () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+<script>
+  tsParticles.load("tsparticles", {
+    background: { color: "transparent" },
+    fpsLimit: 60,
+    particles: {
+      color: { value: "#ff0055" },
+      links: {
+        enable: true,
+        color: "#ff0055",
+        distance: 100,
+        opacity: 0.3
+      },
+      move: {
+        enable: true,
+        speed: 0.5
+      },
+      number: {
+        value: 30
+      },
+      opacity: {
+        value: 0.4
+      },
+      shape: {
+        type: "circle"
+      },
+      size: {
+        value: { min: 1, max: 3 }
+      }
+    }
+  });
+    const glow = document.getElementById("cursorGlow");
+  document.addEventListener("mousemove", (e) => {
+    glow.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
+  });
+</script>
+<div id="tsparticles" class="fixed top-0 left-0 w-full h-full z-0"></div>
+
+</body>
+</html>
