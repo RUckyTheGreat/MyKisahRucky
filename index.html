@@ -5,19 +5,32 @@
   <title>My Bini - Get Started</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     html, body {
-      font-family: 'Lexend', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       overflow: hidden;
+      background: linear-gradient(135deg, #282a36, #44475a);
+      background-size: 300% 300%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(255,0,80,0.15), transparent 70%);
+      background: radial-gradient(circle at center, rgba(189,147,249,0.15), transparent 70%);
       animation: pulse-bg 6s ease-in-out infinite;
       z-index: -1;
     }
@@ -48,29 +61,180 @@
       }
     }
 
+    .glow-btn {
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #bd93f9, #ff79c6, #bd93f9);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glow-btn:hover::before {
+      opacity: 1;
+    }
+
     .glow-btn:hover {
-      box-shadow: 0 0 15px #f43f5e;
+      box-shadow: 0 0 25px rgba(189, 147, 249, 0.6);
       transform: scale(1.05);
     }
 
-    .glow-btn {
-      transition: all 0.3s ease-in-out;
+    .gradient-text {
+      background: linear-gradient(45deg, #bd93f9, #ff79c6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-shadow-glow {
+      text-shadow: 0 0 15px rgba(189, 147, 249, 0.5);
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #bd93f9;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    .sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+    .sparkle:nth-child(5) { top: 50%; left: 10%; animation-delay: 2s; }
+    .sparkle:nth-child(6) { top: 60%; right: 15%; animation-delay: 2.5s; }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(189, 147, 249, 0.1), rgba(255, 121, 198, 0.1));
+      border: 1px solid rgba(189, 147, 249, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .decorative-circle:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .decorative-circle:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .decorative-circle:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 15%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+
+    .decorative-circle:nth-child(4) {
+      width: 40px;
+      height: 40px;
+      bottom: 25%;
+      right: 5%;
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .bg-pattern {
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(189, 147, 249, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 121, 198, 0.1) 0%, transparent 50%);
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-white">
+<body class="text-white bg-pattern">
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
 
-  <div class="min-h-screen flex flex-col justify-center items-center text-center px-6 space-y-6 fade-up">
-    <h1 class="text-5xl md:text-6xl font-extrabold text-red-500 drop-shadow-lg animate-pulse">
-      Welcome to My Bini website💖
-    </h1>
-    <p class="text-gray-300 text-lg max-w-md fade-up" style="animation-delay: 0.5s; animation-fill-mode: both;">
-      The ultimate waifu showcase site, made with love and obsession 💫
+  <div class="min-h-screen flex flex-col justify-center items-center text-center px-6 space-y-8 fade-up relative z-10">
+    <div class="floating mb-4">
+      <h1 class="text-5xl md:text-7xl font-extrabold gradient-text text-shadow-glow drop-shadow-lg">
+        Welcome to My Bini website
+      </h1>
+    </div>
+    
+    <p class="text-gray-300 text-xl md:text-2xl max-w-2xl fade-up leading-relaxed" style="animation-delay: 0.5s; animation-fill-mode: both;">
+      Website tempat nya mykisah dengan nya yang saya cintai sepenuh hati
     </p>
-    <button id="getStartedBtn" class="glow-btn bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg text-lg font-semibold fade-up"
-      style="animation-delay: 1s; animation-fill-mode: both;">
-      🚀 Get Started
-    </button>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-up" style="animation-delay: 1s; animation-fill-mode: both;">
+      <button id="getStartedBtn" class="glow-btn bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl shadow-lg text-lg font-semibold">
+        <i class="fas fa-rocket mr-2"></i> Meluncur ke bini
+      </button>
+      
+      <a href="profile.html" class="px-8 py-4 bg-transparent border-2 border-purple-400 hover:bg-purple-400/20 hover:scale-105 rounded-xl transition-all duration-300 text-purple-400 font-semibold text-lg glow-btn">
+        <i class="fas fa-user mr-2"></i>View Profile
+      </a>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl fade-up" style="animation-delay: 1.5s; animation-fill-mode: both;">
+      <div class="bg-purple-800/30 p-4 rounded-lg text-center border border-purple-700/20">
+        <div class="text-2xl font-bold text-purple-400">3</div>
+        <div class="text-sm text-gray-400">Waifus</div>
+      </div>
+      <div class="bg-purple-800/30 p-4 rounded-lg text-center border border-purple-700/20">
+        <div class="text-2xl font-bold text-purple-400">∞</div>
+        <div class="text-sm text-gray-400">Love</div>
+      </div>
+      <div class="bg-purple-800/30 p-4 rounded-lg text-center border border-purple-700/20">
+        <div class="text-2xl font-bold text-purple-400">24/7</div>
+        <div class="text-sm text-gray-400">Devotion</div>
+      </div>
+      <div class="bg-purple-800/30 p-4 rounded-lg text-center border border-purple-700/20">
+        <div class="text-2xl font-bold text-purple-400">100%</div>
+        <div class="text-sm text-gray-400">Authentic</div>
+      </div>
+    </div>
   </div>
 
   <script>
