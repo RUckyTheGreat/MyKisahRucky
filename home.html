@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Bini - Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, #282a36, #44475a);
       background-size: 300% 300%;
       animation: gradientShift 15s ease infinite;
     }
 
-    h1, h2 {
-      font-family: 'Pacifico', cursive;
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
     }
 
     @keyframes gradientShift {
@@ -25,9 +26,9 @@
     }
 
     .glass-bg {
-      background: rgba(24, 24, 27, 0.6);
+      background: rgba(40, 42, 54, 0.8);
       backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(189, 147, 249, 0.1);
     }
 
     .section {
@@ -47,136 +48,588 @@
 
     .glow-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.4);
+      box-shadow: 0 10px 30px rgba(189, 147, 249, 0.4);
     }
+    
     body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
-  opacity: 0.04;
-  z-index: 0;
-  pointer-events: none;
-}
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      opacity: 0.04;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-.cursor-glow {
-  position: fixed;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(255,0,85,0.15) 0%, transparent 80%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10;
-  mix-blend-mode: screen;
-  transition: transform 0.05s ease;
-}
+    .cursor-glow {
+      position: fixed;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(189,147,249,0.15) 0%, transparent 80%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10;
+      mix-blend-mode: screen;
+      transition: transform 0.05s ease;
+    }
 
-* {
-  transition: all 0.3s ease;
-}
+    * {
+      transition: all 0.3s ease;
+    }
 
+    #tsparticles {
+      z-index: -1 !important;
+    }
 
-#tsparticles {
-  z-index: -1 !important;
-}
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
 
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      from { box-shadow: 0 0 20px rgba(189, 147, 249, 0.3); }
+      to { box-shadow: 0 0 30px rgba(189, 147, 249, 0.6); }
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #bd93f9, #ff79c6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(189, 147, 249, 0.2);
+    }
+
+    .stats-card {
+      background: linear-gradient(135deg, rgba(189, 147, 249, 0.1), rgba(255, 121, 198, 0.1));
+      border: 1px solid rgba(189, 147, 249, 0.2);
+    }
+
+    .page-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Decorative Elements */
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(189, 147, 249, 0.1), rgba(255, 121, 198, 0.1));
+      border: 1px solid rgba(189, 147, 249, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .decorative-circle:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .decorative-circle:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .decorative-circle:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      bottom: 15%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+
+    .decorative-circle:nth-child(4) {
+      width: 40px;
+      height: 40px;
+      bottom: 25%;
+      right: 5%;
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #bd93f9;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    .sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 30%; right: 25%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+    .sparkle:nth-child(5) { top: 50%; left: 10%; animation-delay: 2s; }
+    .sparkle:nth-child(6) { top: 60%; right: 15%; animation-delay: 2.5s; }
+
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .geometric-shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: rotate 20s linear infinite;
+    }
+
+    .geometric-shape:nth-child(1) {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #bd93f9;
+      top: 5%;
+      right: 5%;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .geometric-shape:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      border: 2px solid #ff79c6;
+      bottom: 10%;
+      left: 5%;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .glow-border {
+      position: relative;
+    }
+
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #bd93f9, #ff79c6, #bd93f9);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glow-border:hover::before {
+      opacity: 1;
+    }
+
+    .text-shadow-glow {
+      text-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
+    }
+
+    .bg-pattern {
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(189, 147, 249, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 121, 198, 0.1) 0%, transparent 50%);
+    }
 
   </style>
 </head>
 <body class="text-white overflow-x-hidden">
 <div id="cursorGlow" class="cursor-glow"></div>
 
+<!-- Navigation -->
 <nav class="glass-bg px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md backdrop-blur-xl">
-  <h1 class="text-3xl font-bold text-red-500 tracking-wide drop-shadow-sm">My Bini</h1>
+  <h1 class="text-3xl font-bold text-purple-400 tracking-wide drop-shadow-sm text-shadow-glow">My Bini</h1>
   <ul class="flex items-center space-x-6 text-base md:text-lg font-medium text-gray-200">
-    <li><a href="home.html" class="hover:text-red-400 transition">Home</a></li>
-    <li><a href="profile.html" class="hover:text-red-400 transition text-red-400 font-semibold">Profile</a></li>
+    <li><a href="#home" class="hover:text-purple-400 transition">Home</a></li>
+    <li><a href="#about" class="hover:text-purple-400 transition">About</a></li>
+    <li><a href="#waifus" class="hover:text-purple-400 transition">Waifus</a></li>
+    <li><a href="#gallery" class="hover:text-purple-400 transition">Gallery</a></li>
+    <li><a href="profile.html" class="hover:text-purple-400 transition">Profile</a></li>
   </ul>
 </nav>
 
-  <!-- Sidebar Shortcuts -->
-  <aside class="fixed left-2 top-1/2 transform -translate-y-1/2 space-y-4 z-40">
-    <img src="https://placewaifu.com/image/210" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('intro')" />
-    <img src="https://placewaifu.com/image/211" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('gallery')" />
-    <img src="https://placewaifu.com/image/212" class="rounded-full w-10 ring-2 ring-zinc-700 hover:ring-red-500 cursor-pointer transition" onclick="scrollToDiv('profiles')" />
-  </aside>
-
-  <!-- Sections -->
-  <section id="intro" class="section min-h-screen flex items-center justify-center text-center px-4">
-    <div class="space-y-6 max-w-2xl">
-      <h2 class="text-5xl md:text-6xl text-red-500 font-extrabold drop-shadow-lg">Welcome to My Bini 💖</h2>
-      <p class="text-gray-300 text-lg">Etalase digital cinta waifu. Shrine suci, bukan sekadar galeri.</p>
-     <a href="#gallery" class="inline-block mt-4 px-6 py-3 bg-red-500 hover:bg-pink-600 hover:scale-105 rounded-xl shadow-lg transition-all duration-300 text-white font-semibold">Lihat Bini</a>
-
+<!-- Hero Section - Page 1 -->
+<section id="home" class="section page-section bg-pattern">
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container text-center">
+    <div class="floating mb-8">
+      <h2 class="text-6xl md:text-8xl gradient-text font-extrabold drop-shadow-lg mb-6 text-shadow-glow">
+        Welcome to My Bini
+      </h2>
     </div>
-  </section>
-
-  <section id="about" class="section px-6 md:px-12 py-20 bg-zinc-900/70">
-    <h2 class="text-3xl font-bold text-red-400 text-center mb-6">Tentang Website Ini</h2>
-    <p class="text-gray-300 max-w-3xl mx-auto text-center leading-relaxed">
-      Shrine virtual penuh estetika dan cinta untuk waifu. Transparan PNG, efek halus, dan profil personal — seperti portofolio cinta digital.
+    <p class="text-gray-300 text-xl md:text-2xl leading-relaxed mb-12">
+      Tempat digital menyimpan waifu dari pemilik website yaitu ruckythegreat
+      <br/>Dibuat karena tujuan untuk menyimpan waifu yang saya cintai + gabut :V
     </p>
-  </section>
-  <section id="profiles" class="section px-6 md:px-12 py-20 bg-gradient-to-b from-zinc-950 to-zinc-900/90">
-    <h2 class="text-3xl font-bold text-red-400 text-center mb-10">Profil Bini</h2>
-<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
-  <img src="https://i.pinimg.com/736x/3b/b2/8f/3bb28f8f9d484f84c86bd40adc048779.jpg" class="w-40 rounded-xl shadow-md" />
-  <div>
-    <h3 class="text-xl font-semibold text-red-300">Nene Kusanagi</h3>
-    <p class="text-gray-300">Salah satu anggota unit idol <strong>Vivid BAD SQUAD</strong> dari Project Sekai. Nene punya suara lembut yang menenangkan, tapi sering tampak canggung dan pemalu saat di luar panggung. Di balik keanggunan idolanya, dia menyimpan kejujuran yang polos dan hangat. Dunia sekai terasa lebih cerah saat Nene tersenyum. 💗</p>
-  </div>
-</div>
-<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
-  <img src="https://i.pinimg.com/736x/36/02/9b/36029b0af4a618057ffa81f801fa0347.jpg" class="w-40 rounded-xl shadow-md" />
-  <div>
-    <h3 class="text-xl font-semibold text-red-300">Rikka Takanashi</h3>
-    <p class="text-gray-300">Putri kegelapan dari dunia chuunibyou. Rikka adalah gadis dengan mata kanan yang katanya menyegel kekuatan supernatural bernama <em>"Tyrant's Eye"</em>. Namun di balik delusi itu, tersembunyi gadis manis penuh perasaan yang belum bisa lepas dari masa lalu. Imajinasi dan hati lembutnya menjadikannya waifu yang sangat unik dan tak tergantikan. 🖤</p>
-  </div>
-</div>
-<div class="md:flex items-center gap-6 bg-zinc-800/70 p-6 rounded-xl shadow-xl hover:scale-[1.02] transition-all duration-300">
-  <img src="https://i.pinimg.com/736x/38/28/ca/3828ca7218feffb362d69235ec249906.jpg" class="w-40 rounded-xl shadow-md" />
-  <div>
-    <h3 class="text-xl font-semibold text-red-300">Castorice</h3>
-    <p class="text-gray-300">Karakter orisinal dari semesta Honkai: Star Rail. Campuran energi teknomagik dan kelembutan tak terduga. Castorice dikenal sebagai penyihir data — menguasai algoritma sekaligus pesona. Wibawanya misterius, tapi kehadirannya membuat dunia terasa lebih tenang dan indah. Sebuah karakter waifu masa depan yang layak dijaga. 🔮</p>
-  </div>
-</div>
-
-  </section>
-
-  <section id="contact" class="section px-6 md:px-12 py-20 bg-zinc-900/80">
     
-    <h2 class="text-3xl font-bold text-red-400 text-center mb-4">Contact</h2>
-    <p class="text-gray-300 text-center">Ingin belajar ngoding namun enggan ngoding ? ayo bermalas bersama dengan kontak:</p>
-    <p class="text-center text-red-300 mt-2 text-lg">ruckishuman@gmail.com</p>
-  </section>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+      <a href="#waifus" class="pulse-glow glow-border px-8 py-4 bg-purple-600 hover:bg-purple-700 hover:scale-105 rounded-xl shadow-lg transition-all duration-300 text-white font-semibold text-lg">
+        <i class="fas fa-heart mr-2"></i>Meet My Waifus
+      </a>
+      <a href="#gallery" class="glow-border px-8 py-4 bg-transparent border-2 border-purple-400 hover:bg-purple-400/20 hover:scale-105 rounded-xl transition-all duration-300 text-purple-400 font-semibold text-lg">
+        <i class="fas fa-images mr-2"></i>View Gallery
+      </a>
+    </div>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 text-gray-500 text-sm bg-zinc-950">
-    &copy; 2025 My Bini. Created with ❤️ & anime power.
-  </footer>
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="stats-card p-4 rounded-lg text-center glow-border">
+        <div class="text-2xl font-bold text-purple-400">3</div>
+        <div class="text-sm text-gray-400">Waifus</div>
+      </div>
+      <div class="stats-card p-4 rounded-lg text-center glow-border">
+        <div class="text-2xl font-bold text-purple-400">∞</div>
+        <div class="text-sm text-gray-400">Love</div>
+      </div>
+      <div class="stats-card p-4 rounded-lg text-center glow-border">
+        <div class="text-2xl font-bold text-purple-400">24/7</div>
+        <div class="text-sm text-gray-400">Devotion</div>
+      </div>
+      <div class="stats-card p-4 rounded-lg text-center glow-border">
+        <div class="text-2xl font-bold text-purple-400">100%</div>
+        <div class="text-sm text-gray-400">Authentic</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    function scrollToDiv(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
+<!-- About Section - Page 2 -->
+<section id="about" class="section page-section bg-purple-900/30 bg-pattern">
+  <div class="geometric-shape"></div>
+  <div class="geometric-shape"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container">
+    <h2 class="text-4xl font-bold text-purple-400 text-center mb-12 text-shadow-glow">About This Website</h2>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-purple-300">Tempat Nongkrong Digital Para bini saya</h3>
+        <p class="text-gray-300 leading-relaxed text-lg">
+          Ini bukan sekadar web fans anime biasa, bro. Ini kayak tenpat pameran digital kecil-kecilan yang gue bangun buat nampung Bini-bini saya yang pernah ngisi hati. Dari yang malu-maluin sampe yang sok misterius, semua punya tempat spesial di sini.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          Web ini dibikin karena gabut, tapi juga sekalian pamer skill ngoding dan kecintaan gw sama para mybini. Jadi semi protofolio, semi tempat gangguan jiwa juga 😎.
+        </p>
+        
+        <div class="flex gap-4 mt-8">
+          <div class="text-center">
+            <i class="fas fa-code text-3xl text-purple-400 mb-2"></i>
+            <div class="text-sm text-gray-400">Ngoding Kekinian</div>
+          </div>
+          <div class="text-center">
+            <i class="fas fa-palette text-3xl text-purple-400 mb-2"></i>
+            <div class="text-sm text-gray-400">Desain asli Ciamis</div>
+          </div>
+          <div class="text-center">
+            <i class="fas fa-heart text-3xl text-purple-400 mb-2"></i>
+            <div class="text-sm text-gray-400">Dibikin Pake Cinta</div>
+          </div>
+        </div>
+      </div>
+    
+      
+      <div class="relative">
+        <div class="bg-purple-800/30 p-8 rounded-xl border border-purple-700/20 glow-border">
+          <h4 class="text-xl font-bold text-purple-300 mb-4">Kenapa Ini Penting (Yapping dulu)</h4>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-purple-400 mr-3"></i>
+              Tiap waifu punya lore dan kepribadian yang beda (gak semua cewek sama).
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-purple-400 mr-3"></i>
+              Dipilih pake hati, bukan asal random dari Pinterest.
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-purple-400 mr-3"></i>
+              Ngewakilin genre dan tema anime yang bervariasi, dari yang wholesome sampe yang mindblow.
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-purple-400 mr-3"></i>
+              Bukti kalo desain karakter di anime itu bisa sekeren dan sebermakna itu.
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-purple-400 mr-3"></i>
+              TERUTAMA BUAT PARA KARBIT YANG ASAL CLAIM WAIFU, BUAT NANDAIN INI BINI RESMI AKU.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
 
-    // Scroll fade-in section reveal
-    const sections = document.querySelectorAll(".section");
+<!-- Waifus Section - Page 3 -->
+<section id="waifus" class="section page-section bg-gradient-to-b from-purple-950/50 to-purple-900/30 bg-pattern">
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container">
+    <h2 class="text-4xl font-bold text-purple-400 text-center mb-12 text-shadow-glow">My Beloved Waifus</h2>
+    
+    <div class="space-y-8">
+      <div class="card-hover md:flex items-center gap-8 bg-purple-800/30 p-8 rounded-xl shadow-xl border border-purple-700/20 glow-border">
+        <img src="https://i.pinimg.com/736x/3b/b2/8f/3bb28f8f9d484f84c86bd40adc048779.jpg" class="w-48 h-48 object-cover rounded-xl shadow-lg" />
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-purple-300 mb-3">Nene Kusanagi</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Salah satu anggota unit idol <strong>Vivid BAD SQUAD</strong> dari Project Sekai. Nene punya suara lembut yang menenangkan, tapi sering tampak canggung dan pemalu saat di luar panggung. Di balik keanggunan idolanya, dia menyimpan kejujuran yang polos dan hangat. Dunia sekai terasa lebih cerah saat Nene tersenyum. 💗
+          </p>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Idol</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Shy</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Pure</span>
+          </div>
+        </div>
+      </div>
 
-    const reveal = () => {
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    }
+      <div class="card-hover md:flex items-center gap-8 bg-purple-800/30 p-8 rounded-xl shadow-xl border border-purple-700/20 glow-border">
+        <img src="https://i.pinimg.com/736x/36/02/9b/36029b0af4a618057ffa81f801fa0347.jpg" class="w-48 h-48 object-cover rounded-xl shadow-lg" />
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-purple-300 mb-3">Rikka Takanashi</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Putri kegelapan dari dunia chuunibyou. Rikka adalah gadis dengan mata kanan yang katanya menyegel kekuatan supernatural bernama <em>"Tyrant's Eye"</em>. Namun di balik delusi itu, tersembunyi gadis manis penuh perasaan yang belum bisa lepas dari masa lalu. Imajinasi dan hati lembutnya menjadikannya waifu yang sangat unik dan tak tergantikan. 🖤
+          </p>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Chuunibyou</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Dark</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Imaginative</span>
+          </div>
+        </div>
+      </div>
 
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal);
-  </script>
+      <div class="card-hover md:flex items-center gap-8 bg-purple-800/30 p-8 rounded-xl shadow-xl border border-purple-700/20 glow-border">
+        <img src="https://i.pinimg.com/736x/38/28/ca/3828ca7218feffb362d69235ec249906.jpg" class="w-48 h-48 object-cover rounded-xl shadow-lg" />
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-purple-300 mb-3">Castorice</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Karakter orisinal dari semesta Honkai: Star Rail. Campuran energi teknomagik dan kelembutan tak terduga. Castorice dikenal sebagai penyihir data — menguasai algoritma sekaligus pesona. Wibawanya misterius, tapi kehadirannya membuat dunia terasa lebih tenang dan indah. Sebuah karakter waifu masa depan yang layak dijaga. 🔮
+          </p>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Technomagic</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Mysterious</span>
+            <span class="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Future</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- Gallery Section - Page 4 -->
+<section id="gallery" class="section page-section bg-purple-900/40 bg-pattern">
+  <div class="geometric-shape"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container">
+    <h2 class="text-4xl font-bold text-purple-400 text-center mb-12 text-shadow-glow">Gallery Highlights</h2>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+      <div class="card-hover group relative overflow-hidden rounded-xl glow-border">
+        <img src="https://i.pinimg.com/736x/3b/b2/8f/3bb28f8f9d484f84c86bd40adc048779.jpg" class="w-full aspect-[3/4] object-cover transition-transform group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-lg font-semibold">Nene Kusanagi</p>
+        </div>
+      </div>
+      
+      <div class="card-hover group relative overflow-hidden rounded-xl glow-border">
+        <img src="https://i.pinimg.com/736x/36/02/9b/36029b0af4a618057ffa81f801fa0347.jpg" class="w-full aspect-[3/4] object-cover transition-transform group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-lg font-semibold">Rikka Takanashi</p>
+        </div>
+      </div>
+      
+      <div class="card-hover group relative overflow-hidden rounded-xl glow-border">
+        <img src="https://i.pinimg.com/736x/38/28/ca/3828ca7218feffb362d69235ec249906.jpg" class="w-full aspect-[3/4] object-cover transition-transform group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-lg font-semibold">Castorice</p>
+        </div>
+      </div>
+      
+      <div class="card-hover group relative overflow-hidden rounded-xl glow-border">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3296260/extras/title.png?t=1747218917" class="w-full aspect-[3/4] object-cover transition-transform group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white text-lg font-semibold">Steam Art</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <a href="profile.html" class="inline-block px-8 py-4 bg-purple-600 hover:bg-purple-700 hover:scale-105 rounded-xl shadow-lg transition-all duration-300 text-white font-semibold glow-border">
+        <i class="fas fa-images mr-2"></i>View Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section - Page 5 -->
+<section class="section page-section bg-gradient-to-b from-purple-900/30 to-purple-950/50 bg-pattern">
+  <div class="decorative-circle"></div>
+  <div class="decorative-circle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container">
+    <h2 class="text-4xl font-bold text-purple-400 text-center mb-12 text-shadow-glow">
+      Fitur Gabutan di Web Bini Ini
+    </h2>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-hover text-center p-8 bg-purple-800/30 rounded-xl border border-purple-700/20 glow-border">
+        <i class="fas fa-heart text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-xl font-bold text-purple-300 mb-4">Dipilih Pakai Perasaan</h3>
+        <p class="text-gray-300">
+          Semua waifu di sini bukan hasil random scroll, tapi dipilih pake hati dan sedikit overthinking.
+        </p>
+      </div>
+      
+      <div class="card-hover text-center p-8 bg-purple-800/30 rounded-xl border border-purple-700/20 glow-border">
+        <i class="fas fa-palette text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-xl font-bold text-purple-300 mb-4">Desainnya asli ciamis</h3>
+        <p class="text-gray-300">
+          Responsif, animasinya halus, dan bawa vibes ala Dracula theme biar kelihatan dark tapi manis 😎.
+        </p>
+      </div>
+      
+      <div class="card-hover text-center p-8 bg-purple-800/30 rounded-xl border border-purple-700/20 glow-border">
+        <i class="fas fa-code text-4xl text-purple-400 mb-4"></i>
+        <h3 class="text-xl font-bold text-purple-300 mb-4">Ngodingan Serius Tapi tidak kejam</h3>
+        <p class="text-gray-300">
+          Dibikin pake tech modern biar cepet, ringan, dan nggak bikin laptop ngelag cuma buka homepage. (kayanya)
+        </p>
+      </div>
+    </div>
+    
+</section>
+
+<!-- Contact Section - Page 6 -->
+<section id="contact" class="section page-section bg-purple-900/40 bg-pattern">
+  <div class="geometric-shape"></div>
+  <div class="geometric-shape"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  
+  <div class="content-container text-center">
+    <h2 class="text-4xl font-bold text-purple-400 mb-8 text-shadow-glow">Get in Touch</h2>
+    <p class="text-gray-300 text-lg mb-8">
+      Want to discuss anime, share your favorite waifus, or just chat about coding? 
+      I'm always open to connecting with fellow anime enthusiasts!
+    </p>
+    
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+      <div class="bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <i class="fas fa-envelope text-3xl text-purple-400 mb-4"></i>
+        <h3 class="text-xl font-bold text-purple-300 mb-2">Email</h3>
+        <p class="text-purple-300">ruckishuman@gmail.com</p>
+      </div>
+      
+      <div class="bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <i class="fab fa-discord text-3xl text-purple-400 mb-4"></i>
+        <h3 class="text-xl font-bold text-purple-300 mb-2">Discord</h3>
+        <p class="text-purple-300">Join our community!</p>
+      </div>
+    </div>
+    
+    <div class="flex justify-center gap-4">
+      <a href="https://www.tiktok.com/@naptuneeel" target="_blank" class="p-3 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors glow-border">
+        <i class="fab fa-tiktok text-white"></i>
+      </a>
+      <a href="https://www.instagram.com/vyu_tune" target="_blank" class="p-3 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors glow-border">
+        <i class="fab fa-instagram text-white"></i>
+      </a>
+      <a href="https://twitter.com/ruckishuman" target="_blank" class="p-3 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors glow-border">
+        <i class="fab fa-twitter text-white"></i>
+      </a>
+      <a href="https://discord.gg/8hceStYd9D" target="_blank" class="p-3 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors glow-border">
+        <i class="fab fa-discord text-white"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-12 text-gray-500 text-sm bg-purple-950/80">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex justify-center items-center gap-4 mb-4">
+      <img src="https://komarev.com/ghpvc/?username=RUckyTheGreat&color=red" alt="Profile Views" />
+    </div>
+    <p class="mb-4">&copy; 2025 My Bini. Created with ❤️ & anime power by RUckyTheGreat.</p>
+    <p class="text-xs text-gray-600">Made with JetBrains Mono, Orbitron, and lots of waifu love 💜</p>
+  </div>
+</footer>
+
+<script>
+  function scrollToDiv(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Scroll fade-in section reveal
+  const sections = document.querySelectorAll(".section");
+
+  const reveal = () => {
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        sec.classList.add("visible");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", reveal);
+  window.addEventListener("load", reveal);
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 <script>
@@ -184,10 +637,10 @@
     background: { color: "transparent" },
     fpsLimit: 60,
     particles: {
-      color: { value: "#ff0055" },
+      color: { value: "#bd93f9" },
       links: {
         enable: true,
-        color: "#ff0055",
+        color: "#bd93f9",
         distance: 100,
         opacity: 0.3
       },
@@ -209,7 +662,8 @@
       }
     }
   });
-    const glow = document.getElementById("cursorGlow");
+  
+  const glow = document.getElementById("cursorGlow");
   document.addEventListener("mousemove", (e) => {
     glow.style.transform = `translate(${e.clientX - 75}px, ${e.clientY - 75}px)`;
   });
