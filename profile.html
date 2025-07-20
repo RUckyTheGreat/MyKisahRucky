@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Bini - Profile</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, #282a36, #44475a);
       background-size: 300% 300%;
       animation: gradientShift 15s ease infinite;
+      color: white;
     }
 
-    h1, h2 {
-      font-family: 'Pacifico', cursive;
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
     }
 
     @keyframes gradientShift {
@@ -25,14 +27,65 @@
     }
 
     .glass-bg {
-      background: rgba(24, 24, 27, 0.6);
+      background: rgba(40, 42, 54, 0.8);
       backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(189, 147, 249, 0.1);
     }
 
-    .section {
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(189, 147, 249, 0.2);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #bd93f9, #ff79c6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .stats-card {
+      background: linear-gradient(135deg, rgba(189, 147, 249, 0.1), rgba(255, 121, 198, 0.1));
+      border: 1px solid rgba(189, 147, 249, 0.2);
+    }
+
+    .glow-border {
       position: relative;
-      z-index: 10;
+    }
+
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #bd93f9, #ff79c6, #bd93f9);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glow-border:hover::before {
+      opacity: 1;
+    }
+
+    .text-shadow-glow {
+      text-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
     }
 
     body::before {
@@ -46,127 +99,231 @@
       pointer-events: none;
     }
 
-    .section img {
-      margin: auto;
-    }
-
-    code {
-      background-color: rgba(255,255,255,0.05);
-      padding: 0.2rem 0.5rem;
-      border-radius: 0.25rem;
-    }
-
-    .markdown-body a {
-      color: #f43f5e;
-    }
-
-    .markdown-body h1, .markdown-body h2 {
-      color: #f87171;
-    }
-
-    .badge img {
-      margin: 0.3rem 0.4rem;
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body class="overflow-x-hidden">
   <!-- Navbar -->
   <nav class="glass-bg px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md backdrop-blur-xl">
-    <h1 class="text-3xl font-bold text-red-500 tracking-wide drop-shadow-sm">My Bini</h1>
+    <h1 class="text-3xl font-bold text-purple-400 tracking-wide drop-shadow-sm text-shadow-glow">My Bini</h1>
     <ul class="flex items-center space-x-6 text-base md:text-lg font-medium text-gray-200">
-      <li><a href="home.html" class="hover:text-red-400 transition">Home</a></li>
-      <li><a href="profile.html" class="hover:text-red-400 text-red-400 font-semibold">Profile</a></li>
+      <li><a href="home.html" class="hover:text-purple-400 transition">Home</a></li>
+      <li><a href="home.html#about" class="hover:text-purple-400 transition">About</a></li>
+      <li><a href="home.html#waifus" class="hover:text-purple-400 transition">Waifus</a></li>
+      <li><a href="home.html#gallery" class="hover:text-purple-400 transition">Gallery</a></li>
+      <li><a href="profile.html" class="hover:text-purple-400 text-purple-400 font-semibold">Profile</a></li>
     </ul>
   </nav>
 
   <!-- Profile Section -->
-  <section class="section px-6 md:px-12 py-16 max-w-4xl mx-auto markdown-body text-gray-200 leading-relaxed">
-    <h2 class="text-4xl font-bold text-red-400 text-center mb-10">👋 Hi, I'm Rucky!</h2>
+  <div class="content-wrapper px-6 md:px-12 py-16 max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-5xl md:text-6xl gradient-text font-extrabold drop-shadow-lg mb-6 floating text-shadow-glow">
+        👋 Hi, I'm Rucky!
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
+        <div class="stats-card p-3 rounded-lg text-center glow-border">
+          <i class="fas fa-gamepad text-2xl text-purple-400 mb-2"></i>
+          <div class="text-sm text-gray-400">Game Dev</div>
+        </div>
+        <div class="stats-card p-3 rounded-lg text-center glow-border">
+          <i class="fas fa-code text-2xl text-purple-400 mb-2"></i>
+          <div class="text-sm text-gray-400">Programmer</div>
+        </div>
+        <div class="stats-card p-3 rounded-lg text-center glow-border">
+          <i class="fas fa-palette text-2xl text-purple-400 mb-2"></i>
+          <div class="text-sm text-gray-400">Artist</div>
+        </div>
+        <div class="stats-card p-3 rounded-lg text-center glow-border">
+          <i class="fas fa-cube text-2xl text-purple-400 mb-2"></i>
+          <div class="text-sm text-gray-400">Blender</div>
+        </div>
+      </div>
 
-    <p>🕹️ Game Dev Enthusiast | 👨‍💻 Programmer | 🎨 Digital Artist | 🔧 Blender Tinkerer</p>
-    <p>👨‍💻 Currently building web apps & Roblox games with custom mechanics</p>
-    <p>🎓 Learning FastAPI, React, and full-stack project deployment</p>
-    <p>🎯 Passionate about turning ideas into polished interactive experiences</p>
-    <p>📚 Always learning — from password security to proposal generation engines!</p>
-
-    <hr class="my-8 border-zinc-700"/>
-
-    <h2>🏆 GitHub Stats</h2>
-    <div class="flex flex-col md:flex-row justify-center items-center gap-4 my-4">
-      <img src="https://github-readme-stats.vercel.app/api?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&count_private=true" class="rounded-lg"/>
-      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&layout=compact" class="rounded-lg"/>
+      <div class="bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 max-w-4xl mx-auto glow-border">
+        <p class="text-lg text-gray-300 mb-3">👨‍💻 Currently building web apps & Roblox games with custom mechanics</p>
+        <p class="text-lg text-gray-300 mb-3">🎓 Learning FastAPI, React, and full-stack project deployment</p>
+        <p class="text-lg text-gray-300 mb-3">🎯 Passionate about turning ideas into polished interactive experiences</p>
+        <p class="text-lg text-gray-300">📚 Always learning — from password security to proposal generation engines!</p>
+      </div>
     </div>
 
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=RUckyTheGreat&bg_color=0d1117&color=ffffff&line=ff4f8b&point=fcd12a&area=true&hide_border=true" class="rounded-lg my-4"/>
-    <img src="https://github-profile-trophy.vercel.app/?username=RUckyTheGreat&theme=radical" class="my-4"/>
-
-    <h2>🛠 Tech Stack & Tools</h2>
-    <div class="badge flex flex-wrap items-center mt-4">
-      <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
-      <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
-      <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
-      <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
-      <img src="https://img.shields.io/badge/luau-blue?style=for-the-badge&logo=lua&logoColor=white"/>
-      <img src="https://img.shields.io/badge/fastapi-005f73?style=for-the-badge&logo=fastapi&logoColor=white"/>
-      <img src="https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-      <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-      <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/>
-      <img src="https://img.shields.io/badge/blender-F5792A?style=for-the-badge&logo=blender&logoColor=white"/>
+    <div class="flex justify-center my-8">
+      <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3296260/extras/title.png?t=1747218917" class="rounded-xl max-w-full h-auto shadow-lg glow-border" />
     </div>
 
-    <h2 class="mt-10">🏅 Certifications & Achievements</h2>
-    <ul class="list-disc list-inside">
-      <li>🥇 <b>Jurnalis</b> (idk where the certification)</li>
-      <li>🥈 <a href="https://drive.google.com/file/d/1aIYjaRizw5xI_F_JvDXlWU3w40tk1tmL/view?usp=drive_link" target="_blank">Story Telling Contest (UPI - Korean)</a></li>
-      <li>🧠 Representing creativity & curiosity with every build</li>
-    </ul>
+    <hr class="my-12 border-purple-700"/>
 
-    <h2 class="mt-10">🌟 Featured Projects</h2>
-    <ul class="list-disc list-inside">
-      <li>🧟 <a href="https://github.com/RUckyTheGreat/Propogen-Chan" target="_blank">PROPOGEN-CHAN</a> – Proposal Generator using <b>React + FastAPI</b>, with PDF export & image upload</li>
-      <li>🔐 <a href="https://github.com/RUckyTheGreat/Password-generator-FreshPython" target="_blank">Safe Password Generator</a> – Desktop password tool with multiple modes</li>
-      <li>🎮 <a href="https://www.roblox.com/games/139088614640443/StoryTurnbaseGame" target="_blank">Roblox Combat System</a> – Advanced turn-based combat system (WIP)</li>
-    </ul>
+    <div class="card-hover bg-purple-800/30 p-8 rounded-xl border border-purple-700/20 mb-12 glow-border">
+      <h2 class="text-3xl font-bold text-purple-400 text-center mb-8 text-shadow-glow">🏆 GitHub Stats</h2>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+        <img src="https://github-readme-stats.vercel.app/api?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&count_private=true" class="rounded-lg"/>
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=RUckyTheGreat&theme=radical&show_icons=true&hide_border=true&layout=compact" class="rounded-lg"/>
+      </div>
 
-    <h2 class="mt-10">🧠 Currently Exploring</h2>
-    <ul class="list-disc list-inside">
-      <li>🤖 Scripting AI logic in <b>Roblox Studio</b></li>
-      <li>🌐 Building secure full-stack apps with FastAPI + React</li>
-      <li>📊 UI polish, animation, and PDF generation</li>
-    </ul>
-
-    <h2 class="mt-10">🔥 What I'm Working On</h2>
-    <ul class="list-disc list-inside">
-      <li>🚀 Public launch of Proposal Generator app</li>
-      <li>🎮 Multiplayer emote sync in Roblox</li>
-      <li>🎯 Deep dive into API deployment and backend logic</li>
-    </ul>
-
-    <div class="flex justify-center my-10">
-      <img src="https://c.tenor.com/SDkS_6QSzjgAAAAd/tenor.gif" class="rounded-lg"/>
+      <div class="flex justify-center my-6">
+        <a href="https://github.com/ashutosh00710/github-readme-activity-graph" target="_blank">
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=RUckyTheGreat&bg_color=0d1117&color=ffffff&line=bd93f9&point=fcd12a&area=true&hide_border=true" class="rounded-lg"/>
+        </a>
+      </div>
+      <div class="flex justify-center">
+        <img src="https://github-profile-trophy.vercel.app/?username=RUckyTheGreat&theme=radical" class="rounded-lg"/>
+      </div>
     </div>
 
-    <h2 class="mt-10 text-center">🌐 Connect with Me</h2>
-    <div class="flex flex-wrap justify-center gap-3 my-4">
-      <a href="https://www.tiktok.com/@naptuneeel" target="_blank"><img src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=tiktok&logoColor=white"/></a>
-      <a href="https://www.instagram.com/vyu_tune" target="_blank"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/></a>
-      <a href="https://twitter.com/ruckishuman" target="_blank"><img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=twitter&logoColor=white"/></a>
-      <a href="https://www.reddit.com/user/critical_Ravine" target="_blank"><img src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=reddit&logoColor=white"/></a>
-      <a href="https://discord.gg/2zwUr3jaHx" target="_blank"><img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"/></a>
-      <a href="https://www.roblox.com/users/3101268537/profile" target="_blank"><img src="https://img.shields.io/badge/Roblox-%2320232a.svg?style=for-the-badge&logo=roblox&logoColor=white"/></a>
+    <div class="card-hover bg-purple-800/30 p-8 rounded-xl border border-purple-700/20 mb-12 glow-border">
+      <h2 class="text-3xl font-bold text-purple-400 text-center mb-8 text-shadow-glow">🛠 Tech Stack & Tools</h2>
+      <div class="flex flex-wrap justify-center items-center gap-2">
+        <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
+        <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+        <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+        <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+        <img src="https://img.shields.io/badge/luau-blue?style=for-the-badge&logo=lua&logoColor=white"/>
+        <img src="https://img.shields.io/badge/fastapi-005f73?style=for-the-badge&logo=fastapi&logoColor=white"/>
+        <img src="https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+        <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
+        <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/>
+        <img src="https://img.shields.io/badge/blender-F5792A?style=for-the-badge&logo=blender&logoColor=white"/>
+      </div>
     </div>
 
-    <div class="flex justify-center my-6">
-      <img src="https://media.tenor.com/piOupYyLux0AAAAi/anime-kitty.gif" class="rounded-lg" />
+    <div class="flex justify-center my-8">
+      <img src="https://images.steamusercontent.com/ugc/18020879235061954736/A37FFD23E52EFE068C0A0EEBE1C68D839A4D3D09/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" class="rounded-xl max-w-full h-auto shadow-lg glow-border" />
     </div>
 
-    <div class="text-center mt-10 text-sm text-gray-400">
-      <img src="https://komarev.com/ghpvc/?username=RUckyTheGreat&color=blue" class="mx-auto" />
-      <p class="mt-2">🚀 Thanks for visiting!</p>
-      <p><em>We are human, not horse. Human are evolving...</em></p>
-      <img src="https://c.tenor.com/1cIigwthwRIAAAAC/tenor.gif" class="rounded-lg mt-4 mx-auto" />
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="card-hover bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+          <i class="fas fa-trophy mr-3"></i>🏅 Certifications & Achievements
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-medal text-purple-400 mr-3 mt-1"></i>
+            <span><b>Jurnalis</b> (idk where the certification)</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-medal text-purple-400 mr-3 mt-1"></i>
+            <span><a href="https://drive.google.com/file/d/1aIYjaRizw5xI_F_JvDXlWU3w40tk1tmL/view?usp=drive_link" target="_blank">Story Telling Online Contest - Korean from UPI</a></span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-brain text-purple-400 mr-3 mt-1"></i>
+            <span>Representing creativity & curiosity with every build</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-hover bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+          <i class="fas fa-star mr-3"></i>🌟 Featured Projects
+        </h2>
+        <ul class="space-y-4 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-ghost text-purple-400 mr-3 mt-1"></i>
+            <div>
+              <a href="https://github.com/RUckyTheGreat/Propogen-Chan" target="_blank"><b>PROPOGEN-CHAN</b></a> – Full-stack Proposal Generator using <b>React + FastAPI</b>, featuring PDF export & image upload
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-lock text-purple-400 mr-3 mt-1"></i>
+            <div>
+              <a href="https://github.com/RUckyTheGreat/Password-generator-FreshPython" target="_blank"><b>Safe Password Generator (Python)</b></a> – Desktop password generator with <b>Super Safe, Simple, Custom, and Shuffle modes</b>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-gamepad text-purple-400 mr-3 mt-1"></i>
+            <div>
+              <a href="https://www.roblox.com/games/139088614640443/StoryTurnbaseGame" target="_blank"><b>Roblox Combat System</b></a> – Advanced turn-based combat system with emotional AI, pathfinding, and synced animations (WIP)
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </section>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="card-hover bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+          <i class="fas fa-brain mr-3"></i>🧠 Currently Exploring
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-robot text-purple-400 mr-3 mt-1"></i>
+            <span>Scripting advanced AI/logic in <b>Roblox Studio</b> using Pathfinding & Emotional Systems</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-globe text-purple-400 mr-3 mt-1"></i>
+            <span>Building secure, interactive full-stack apps (React + FastAPI)</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-chart-bar text-purple-400 mr-3 mt-1"></i>
+            <span>Enhancing user experience with PDF generation, UI animations, and real-time feedback</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-hover bg-purple-800/30 p-6 rounded-xl border border-purple-700/20 glow-border">
+        <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+          <i class="fas fa-fire mr-3"></i>🔥 What I'm Working On
+        </h2>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-rocket text-purple-400 mr-3 mt-1"></i>
+            <span>Releasing full <b>proposal generator</b> app for public & school use</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-gamepad text-purple-400 mr-3 mt-1"></i>
+            <span>Improving multiplayer emote sync system in Roblox</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-bullseye text-purple-400 mr-3 mt-1"></i>
+            <span>Deepening skills in <b>backend logic</b>, API deployment, and UI polish</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex justify-center my-8">
+      <img src="https://images.steamusercontent.com/ugc/12116828473796026703/5DCEF9C3AA8E1FD3542CCC4CA9713E82C70775E1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" class="rounded-xl max-w-full h-auto shadow-lg glow-border" />
+    </div>
+
+    <div class="card-hover bg-purple-800/30 p-8 rounded-xl border border-purple-700/20 text-center glow-border">
+      <h2 class="text-3xl font-bold text-purple-400 mb-8 flex items-center justify-center text-shadow-glow">
+        <i class="fas fa-globe mr-3"></i>🌐 Connect with Me
+      </h2>
+      <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <a href="https://www.tiktok.com/@naptuneeel" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/TikTok-%23000000.svg?style=for-the-badge&logo=tiktok&logoColor=white"/>
+        </a>
+        <a href="https://www.instagram.com/vyu_tune" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white"/>
+        </a>
+        <a href="https://twitter.com/ruckishuman" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=twitter&logoColor=white"/>
+        </a>
+        <a href="https://www.reddit.com/user/critical_Ravine" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/Reddit-%23FF4500.svg?style=for-the-badge&logo=reddit&logoColor=white"/>
+        </a>
+        <a href="https://discord.gg/2zwUr3jaHx" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"/>
+        </a>
+        <a href="https://www.roblox.com/users/3101268537/profile" target="_blank" class="hover:scale-110 transition-transform">
+          <img src="https://img.shields.io/badge/Roblox-%2320232a.svg?style=for-the-badge&logo=roblox&logoColor=white"/>
+        </a>
+      </div>
+    </div>
+
+    <div class="text-center mt-12 text-sm text-gray-400">
+      <img src="https://komarev.com/ghpvc/?username=RUckyTheGreat&color=purple" class="mx-auto mb-6" />
+      <h2 class="text-2xl font-bold text-purple-400 mb-6 text-shadow-glow">🚀 Thanks for visiting!</h2>
+      <div class="flex justify-center my-6">
+        <img src="https://images.steamusercontent.com/ugc/14538439570979846740/546D8D8833264E1F2841943ECFE6262609E5234D/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" class="rounded-xl max-w-full h-auto shadow-lg glow-border" />
+      </div>
+      <p class="text-lg italic text-gray-300">We are human, not horse. Human are evolving...</p>
+    </div>
+  </div>
 
   <!-- Particle Background -->
   <div id="tsparticles" class="fixed top-0 left-0 w-full h-full z-0"></div>
@@ -176,10 +333,10 @@
       background: { color: "transparent" },
       fpsLimit: 60,
       particles: {
-        color: { value: "#ff0055" },
+        color: { value: "#bd93f9" },
         links: {
           enable: true,
-          color: "#ff0055",
+          color: "#bd93f9",
           distance: 100,
           opacity: 0.3
         },
