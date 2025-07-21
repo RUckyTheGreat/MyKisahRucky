@@ -3,11 +3,11 @@
 Welcome to **My Bini**, a futuristic personal web gallery dedicated to waifu appreciation 💖  
 Built with **HTML**, **CSS**, and enhanced by animations and visual polish — a sentimental space to express digital affection.
 <br/>
-Pencet rikka di bawah ini!!!
+> _“Pencet rikka di bawah ini!!!.”_
 <br/>
 [![Click to visit My Bini](https://c.tenor.com/MnKTOrmSEnYAAAAC/tenor.gif)](https://my-kisah-rucky.vercel.app/)
 
-> _“Bini bukan sekadar gambar. Dia inspirasi, motivasi, dan pelipur lara.”_
+
 
 ---
 
