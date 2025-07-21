@@ -68,8 +68,6 @@ my-bini/
 ├── home.html
 ├── styles.css
 ├── scripts.js
-├── assets/
-│   └── 725d541f-6a28-4be0-846d-1d07ea9277ed.png
 └── README.md
 ```
 
